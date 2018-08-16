@@ -44,6 +44,19 @@ app.get('/about', function(req, res) {
     res.render('about');
 });
 
+app.get('/articles/edit/:index', function(req, res){
+    var index = parseInt(req.params.index);
+    if (index < articles.length && index >= 0) {
+        res.render('articles/edit', { article: articles[req.params.index] });
+    } else {
+        res.send('Error');
+    }
+});
+
+// app.put('articles/:index', function(req, res){
+//     res.send
+// })
+
 app.listen(3000, function() {
     console.log("You're listening to the smooth sounds of port 3000 in the morning");
 });
